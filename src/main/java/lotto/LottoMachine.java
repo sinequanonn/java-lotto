@@ -8,7 +8,7 @@ public class LottoMachine {
 
 
     public void sellLottoTo(Customer customer) {
-        int count = customer.choseLottoCount();
+        Long count = customer.choseLottoCount();
         for (int i = 0; i <count; i++) {
             customer.buy(makeLotto());
         }
