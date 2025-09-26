@@ -16,5 +16,19 @@ public class Lotto {
         }
     }
 
-    // TODO: 추가 기능 구현
+    @Override
+    public String toString() {
+        return numbers.toString();
+    }
+
+    public int compareTo(Lotto lotto) {
+        int matchCount = 0;
+
+        for (Integer number : this.numbers) {
+            if (lotto.numbers.contains(number)) {
+                matchCount++;
+            }
+        }
+        return matchCount;
+    }
 }

@@ -5,24 +5,27 @@ import camp.nextstep.edu.missionutils.Console;
 public class Customer {
 
     private Bag bag;
-    private int lottoCount;
+    private Long price;
+    private Long lottoCount;
 
     public Customer(Bag bag) {
         this.bag = bag;
-        this.lottoCount = 0;
+        this.price = 0L;
+        this.lottoCount = 0L;
     }
 
     public void buy(Lotto lotto) {
         bag.hold(lotto);
     }
 
-    public int choseLottoCount() {
+    public Long choseLottoCount() {
         System.out.println("구입금액을 입력해 주세요.");
         String input = Console.readLine();
         try {
-            int priceInput = Integer.parseInt(input);
+            Long priceInput = Long.parseLong(input);
             validate(priceInput);
-            this.lottoCount = (priceInput / 1000);
+            this.price = priceInput;
+            this.lottoCount = (priceInput / 1000L);
             System.out.println("lottoCount = " + lottoCount);
         } catch (IllegalArgumentException e) {
             System.out.println(e.getMessage());
@@ -34,21 +37,21 @@ public class Customer {
         return this.lottoCount;
     }
 
-    public boolean wantToBuyMoreLotto() {
-        return this.lottoCount == 0;
-    }
-
     public void checkLotto() {
         bag.viewLotto();
     }
 
-    private void validate(int countInput) {
-        if (countInput % 1000 != 0) {
+    private void validate(Long countInput) {
+        if (countInput % 1000L != 0L) {
             throw new IllegalArgumentException("[ERROR] 구입 금액의 입력은 정수이어야 합니다.");
         }
     }
 
     public Bag getBag() {
         return bag;
+    }
+
+    public Long getPrice() {
+        return price;
     }
 }

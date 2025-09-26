@@ -21,8 +21,10 @@ public class Application {
         Integer bonus = Integer.valueOf(bonusInput);
 //        System.out.println("bonus = " + bonus);
 
-        LottoResult lottoResult = new LottoResult(winningLotto, customer.getBag().getLottos(), bonus);
+        LottoResult lottoResult = new LottoResult(winningLotto.getWinningLotto(), customer.getBag().getLottos(), bonus);
 
+        lottoResult.printLottoResult();
+        lottoResult.printRateReturn(customer.getPrice());
 
 
     }
