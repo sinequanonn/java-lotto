@@ -4,8 +4,9 @@ import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.List;
 
-public class LottoMachine {
+import static lotto.Constant.*;
 
+public class LottoMachine {
 
     public void sellLottoTo(Customer customer) {
         Long count = customer.choseLottoCount();
@@ -15,8 +16,8 @@ public class LottoMachine {
         customer.checkLotto();
     }
 
-    private Lotto makeLotto() {
-        List<Integer> numbers = Randoms.pickUniqueNumbersInRange(1, 45, 6);
+    public Lotto makeLotto() {
+        List<Integer> numbers = Randoms.pickUniqueNumbersInRange(LOTTO_START_NUMBER, LOTTO_END_NUMBER, LOTTO_COUNT);
         return new Lotto(numbers);
     }
 
