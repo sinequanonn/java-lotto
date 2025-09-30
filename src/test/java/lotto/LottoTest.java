@@ -1,5 +1,6 @@
 package lotto;
 
+import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
@@ -23,5 +24,17 @@ class LottoTest {
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
-    // 아래에 추가 테스트 작성 가능
+    @DisplayName("로또 번호와 당첨 번호 비교하고 매칭된 번호 개수를 반환한다.")
+    @Test
+    void compareGeneratedLottoToWinningLotto() {
+        //given
+        Lotto lotto = new Lotto(List.of(1,2,3,4,5,6));
+        Lotto winningLotto = new Lotto(List.of(1,2,3,4,5,6));
+
+        //when
+        int count = winningLotto.compareTo(lotto);
+
+        //then
+        Assertions.assertThat(count).isEqualTo(6);
+    }
 }
