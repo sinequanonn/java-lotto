@@ -3,7 +3,7 @@ package lotto;
 import java.util.ArrayList;
 import java.util.List;
 
-public class WinningLotto {
+public class WinningLottoMachine {
 
     public Lotto getWinningLotto(String input) {
         return new Lotto(makeWinningLotto(input));
