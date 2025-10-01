@@ -32,7 +32,7 @@ class LottoTest {
         Lotto winningLotto = new Lotto(List.of(1,2,3,4,5,6));
 
         //when
-        int count = winningLotto.compareTo(lotto);
+        int count = winningLotto.countMatchNumbers(lotto);
 
         //then
         Assertions.assertThat(count).isEqualTo(6);

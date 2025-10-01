@@ -1,14 +1,10 @@
 package lotto;
 
-import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
-import java.util.List;
-
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
-import static org.junit.jupiter.api.Assertions.*;
 
 class WinningLottoTest {
 
@@ -16,11 +12,11 @@ class WinningLottoTest {
     @Test
     void getWinningLotto() {
         //given
-        WinningLotto winningLotto = new WinningLotto();
+        WinningLottoMachine winningLottoMachine = new WinningLottoMachine();
         String input = "1,2,3,4,5,6";
 
         //when
-        Lotto lotto = winningLotto.getWinningLotto(input);
+        Lotto lotto = winningLottoMachine.getWinningLotto(input);
 
         //then
         assertThat(lotto).isInstanceOf(Lotto.class);
@@ -30,11 +26,11 @@ class WinningLottoTest {
     @Test
     void throwsExceptionWhenWinningNumbersContainDuplicates() {
         //given
-        WinningLotto winningLotto = new WinningLotto();
+        WinningLottoMachine winningLottoMachine = new WinningLottoMachine();
         String input = "1,2,3,4,5,5";
 
         //when, then
-        assertThatThrownBy(() -> winningLotto.getWinningLotto(input))
+        assertThatThrownBy(() -> winningLottoMachine.getWinningLotto(input))
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
@@ -42,11 +38,11 @@ class WinningLottoTest {
     @Test
     void throwsExceptionWhenWinningNumbersContainNegativeNumber() {
         //given
-        WinningLotto winningLotto = new WinningLotto();
+        WinningLottoMachine winningLottoMachine = new WinningLottoMachine();
         String input = "-1,2,3,4,-5,5";
 
         //when, then
-        assertThatThrownBy(() -> winningLotto.getWinningLotto(input))
+        assertThatThrownBy(() -> winningLottoMachine.getWinningLotto(input))
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
@@ -54,11 +50,11 @@ class WinningLottoTest {
     @Test
     void throwsExceptionWhenLottoNumberIsOutOfRange() {
         //given
-        WinningLotto winningLotto = new WinningLotto();
+        WinningLottoMachine winningLottoMachine = new WinningLottoMachine();
         String input = "134,2,3,4,5,46";
 
         //when, then
-        assertThatThrownBy(() -> winningLotto.getWinningLotto(input))
+        assertThatThrownBy(() -> winningLottoMachine.getWinningLotto(input))
                 .isInstanceOf(IllegalArgumentException.class);
     }
 }

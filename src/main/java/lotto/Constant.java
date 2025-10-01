@@ -6,4 +6,6 @@ public class Constant {
     public static Integer LOTTO_END_NUMBER = 45;
 
     public static Integer LOTTO_COUNT = 6;
+
+    public static int LOTTO_PRICE = 1000;
 }

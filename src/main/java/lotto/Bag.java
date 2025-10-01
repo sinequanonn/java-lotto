@@ -11,15 +11,24 @@ public class Bag {
         lottos.add(lotto);
     }
 
+    public List<Lotto> getLottos() {
+        return lottos;
+    }
+
     public void viewLotto() {
-        System.out.println(lottos.size() + "개를 구매했습니다.");
         for (Lotto lotto : lottos) {
             System.out.println(lotto);
         }
     }
 
-
-    public List<Lotto> getLottos() {
-        return lottos;
+    public List<Rank> compareWithAll(Lotto winningLotto, Integer bonusNumber) {
+        List<Rank> ranks = new ArrayList<>();
+        for (Lotto lotto : lottos) {
+            int matchCount = lotto.countMatchNumbers(winningLotto);
+            boolean matchBonus = lotto.containsBonus(bonusNumber);
+            Rank rank = Rank.checkRank(matchCount, matchBonus);
+            ranks.add(rank);
+        }
+        return ranks;
     }
 }

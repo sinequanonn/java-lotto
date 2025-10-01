@@ -34,14 +34,21 @@ public class Lotto {
         return numbers.toString();
     }
 
-    public int compareTo(Lotto lotto) {
+    public int countMatchNumbers(Lotto lotto) {
         int matchCount = 0;
-
         for (Integer number : this.numbers) {
             if (lotto.numbers.contains(number)) {
                 matchCount++;
             }
         }
         return matchCount;
+    }
+
+    public List<Integer> getNumbers() {
+        return numbers;
+    }
+
+    public boolean containsBonus(Integer bonusNumber) {
+        return numbers.contains(bonusNumber);
     }
 }
